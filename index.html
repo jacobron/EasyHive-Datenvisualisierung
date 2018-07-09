@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>EasyHive Spektrum Explorer</title>
+  <link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="moment.js"></script>
+	<script src="functions.js"></script>
+</head>
+<body>
+
+<div id="content">
+	<h1>EasyHive Spectrum</h1>
+	<h2 id="date">Datum</h2>
+	<img id="scale-left" src="scale_left.png"/>
+	<div id="spektrum-container">
+		<div id="spektrum">
+		</div>
+	</div>
+    <img id="color-scale" src="color_scale.png" />
+	<button id="daybefore" onclick="daydiagram()"></button>
+	<button id="dayafter" onclick="daydiagram()" style="visibility:hidden"></button>
+
+
+
+</div>
+
+
+</body>

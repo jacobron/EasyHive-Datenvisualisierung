@@ -1,0 +1,38 @@
+#color-scale{
+  display: block;
+  float: left;
+}
+#scale-left{
+  display: block;
+  height: 300px;
+  float:left;
+}
+
+.spektrum-tile{
+  position: relative;
+  float: left;
+}
+.spektrum-tile-label{
+  position: absolute;
+  bottom: -3em;
+  left: 0;
+  z-index: 200;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  width: 100%;
+  text-align: center;
+}
+
+#spektrum img{
+  display: block;
+  height: 300px;
+  width: 50px;
+}
+#spektrum-container{
+  width: 90%;
+  height: 360px;
+
+}
+#spektrum{
+  width: 1400px;
+}
