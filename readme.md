@@ -11,3 +11,7 @@ Demo gibt es hier:
 
 Einfach den Spektrum-App Ordner in den Ordner mit den Audioaufnahmen kopieren und über den Browser aufrufen.
 
+## Thanks
+
+## License
+
