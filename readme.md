@@ -4,7 +4,7 @@ Audiodatavisualisierung mit Hilfe von sox-generierten Spektren von einem raspber
 Die Dateibenennung ist sehr spezifisch, weshalb für eine Adaption diese angepasst werden muss.
 
 Demo gibt es hier:
-[Live-Demo](https://easyhive.fablab-cottbus.de/4E/Spektrum-App/index.html)
+[Live-Demo](http://easyhive.fablab-cottbus.de/4E/Spektrum-App/index.html)
 
 
 ## Einbindung
