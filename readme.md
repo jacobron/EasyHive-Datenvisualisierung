@@ -23,5 +23,7 @@ Einfach den Spektrum-App Ordner in den Ordner mit den Audioaufnahmen kopieren un
 
 ## Thanks
 
+
 ## License
 
+free for everybody
