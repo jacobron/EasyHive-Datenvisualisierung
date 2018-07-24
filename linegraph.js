@@ -40,7 +40,12 @@ $(document).ready(function(){
 
 						var LineGraph = new Chart(ctx, {
 							type: 'line',
-							data: chartdata
+							data: chartdata,
+							options: {
+								responsive: true,
+								maintainAspectRatio: false
+							}
+
 						});
 					
 					},
