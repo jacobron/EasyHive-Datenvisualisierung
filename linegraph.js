@@ -14,8 +14,12 @@ $(document).ready(function(){
 						var temperature = [];
 						
 						for(var i in arr) {
-							time.push(arr[i].time);
-							temperature.push(arr[i].temperature);
+							t1 = arr[i].time.split(" ")[1];
+							t2 = t1.split(":")[0]+":"+t1.split(":")[1];
+							time.push(t2);
+							te1 = arr[i].temperature.toString(); 
+							te2 = te1.substr(0,2) + "." + te1.substr(2,5);
+							temperature.push(te2);
 						}
 						
 						//console.log(temperature[1]);		
@@ -44,6 +48,20 @@ $(document).ready(function(){
 							options: {
 								responsive: true,
 								maintainAspectRatio: false
+								scales: {
+						        yAxes: [{
+						          scaleLabel: {
+						            display: true,
+						            labelString: 'Temperature in °C'
+						          }
+						        }],
+						        xAxes: [{
+						          scaleLabel: {
+						            display: true,
+						            labelString: 'Time'
+						          }
+						        }]
+						      }
 							}
 
 						});
