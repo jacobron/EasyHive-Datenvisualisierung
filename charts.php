@@ -8,10 +8,10 @@
 		$date1 = date('Y-m-d H');
 		$date2 = date('Y-m-d H', time()-2880);	
 		
-		// get the exact time till which the results shall be shwon (exactl 48minutes before "now")
+		// get the exact time till which the results shall be shwon (exactly 48minutes before "now")
 		$date3 = date('Y-m-d H:i:s', time()-2880);
 					
-		$statement = $pdo->prepare("SELECT * FROM bienenpi3_temp WHERE time LIKE :time1 OR time LIKE :time2");
+		$statement = $pdo->prepare("SELECT * FROM bienenpi2_temp WHERE time LIKE :time1 OR time LIKE :time2");
 		$statement->execute(array('time1' => "%$date1%", 'time2' => "%$date2%"));  
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC); 
 		
@@ -28,7 +28,7 @@
 	else{
 		//echo "date: ", $_GET["date"];
 		$date = $_GET["date"];
-		$statement = $pdo->prepare("SELECT * FROM bienenpi3_temp WHERE time LIKE :time1");
+		$statement = $pdo->prepare("SELECT * FROM bienenpi2_temp WHERE time LIKE :time1");
 		$statement->execute(array('time1' => "%$date%"));  
 		$result = $statement->fetchAll(PDO::FETCH_ASSOC); 
 		

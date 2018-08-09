@@ -72,25 +72,33 @@ function daydiagram(input){
 // Funktion zum Anzeigen der Live-Daten
 function tempLive(){
 	$.ajax({
-		url : "http://easyhive.fablab-cottbus.de/daria/charts.php",
+		url : "http://easyhive.fablab-cottbus.de/daria/test/charts.php",
 		type : "GET", 
 		success : function(data){
 
 			arr = JSON.parse(data)
 			var time = [];
-			var temperature = [];
+			var temp_entry = [];
+			var temp_inside = [];
+			var temp_outside = [];
 			
 			for(var i in arr) {
 				t1 = arr[i].time.split(" ")[1];
 				t2 = t1.split(":")[0]+":"+t1.split(":")[1];
 				time.push(t2);
-				te1 = arr[i].temperature.toString(); 
-				te2 = te1.substr(0,2) + "." + te1.substr(2,5);
-				temperature.push(te2);
+				teE1 = arr[i].temp_entry.toString(); 
+				teE2 = teE1.substr(0,2) + "." + teE1.substr(2,5);
+				temp_entry.push(teE2);
+				teI1 = arr[i].temp_inside.toString(); 
+				teI2 = teI1.substr(0,2) + "." + teI1.substr(2,5);
+				temp_inside.push(teI2);	
+				teO1 = arr[i].temp_outside.toString(); 
+				teO2 = teO1.substr(0,2) + "." + teO1.substr(2,5);
+				temp_outside.push(teO2);
 
 			}  	
 
-			createGraph(time, temperature);
+			createGraph(time, temp_entry, temp_inside, temp_outside);
 		
 		},
 		error : function(data) {
@@ -110,23 +118,34 @@ function tempDay(day){
 		url : "http://easyhive.fablab-cottbus.de/daria/test/charts.php" + "?date=" + date,
 		type : "GET", 
 		success : function(data){
-			console.log("SUCCESS");
+			console.log("SUCCESS2");
 			arr = JSON.parse(data)
 			var time = [];
-			var temperature = [];
-			
+			var temp_entry = [];
+			var temp_inside = [];
+			var temp_outside = [];
+			console.log("länge: " + data.length)
 			for(var i in arr) {
 				t1 = arr[i].time.split(" ")[1];
 				t2 = t1.split(":")[0]+":"+t1.split(":")[1];
 				time.push(t2);
-				te1 = arr[i].temperature.toString(); 
-				te2 = te1.substr(0,2) + "." + te1.substr(2,5);
-				temperature.push(te2);
-
+				// todo: make this nicer! Maybe a second for loop to iterate over all columns in the array
+				teE1 = arr[i].temp_entry.toString(); 
+				teE2 = teE1.substr(0,2) + "." + teE1.substr(2,5);
+				temp_entry.push(teE2);
+				teI1 = arr[i].temp_inside.toString(); 
+				teI2 = teI1.substr(0,2) + "." + teI1.substr(2,5);
+				temp_inside.push(teI2);	
+				teO1 = arr[i].temp_outside.toString(); 
+				teO2 = teO1.substr(0,2) + "." + teO1.substr(2,5);
+				temp_outside.push(teO2);
 			}  	
 
+			console.log(temp_entry)
+			console.log(temp_outside)
+			console.log(temp_inside)
 
-			createGraph(time, temperature);
+			createGraph(time, temp_entry, temp_inside, temp_outside);
 
 		},
 		error : function(data) {
@@ -135,25 +154,49 @@ function tempDay(day){
   });
 }
   
-function createGraph(time, temperature){
+function createGraph(time, temp_entry, temp_inside, temp_outside){
 	// delete the canvas element containig the graph and add it again afterwards
 	// reason: prevent overeffect (multiple graphs at the same time, switching by chance)
 	$("#myChart").remove();
 	$('#chart-container').append('<canvas id="myChart" ></canvas>');
+
+	console.log(temp_entry)
+	console.log(temp_outside)
+	console.log(temp_inside)
 
 	// create a new element
 	var chartdata = {
 		labels: time,
 		datasets: [
 		{
-			label: "temp",
+			label: "temp_entry",
+			fill: false,
+			lineTension: 0.1,
+			backgroundColor: "rgba(255,215,0,0.5)",
+			borderColor: "rgba(255,215,0,1)",
+			pointHoverBackgroundColor: "rgba(255,215,0,1)",
+			pointHoverBorderColor: "rgba(255,215,0,1)",
+			data: temp_entry
+		},
+		{
+			label: "temp_inside",
+			fill: false,
+			lineTension: 0.1,
+			backgroundColor: "rgba(255,100,20,0.75)",
+			borderColor: "rgba(255,100,20,1)",
+			pointHoverBackgroundColor: "rgba(255,100,20,1)",
+			pointHoverBorderColor: "rgba(255,100,20,1)",
+			data: temp_inside
+		},
+		{
+			label: "temp_outside",
 			fill: false,
 			lineTension: 0.1,
 			backgroundColor: "rgba(59, 89, 152, 0.75)",
 			borderColor: "rgba(59, 89, 152, 1)",
 			pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
 			pointHoverBorderColor: "rgba(59, 89, 152, 1)",
-			data: temperature
+			data: temp_outside
 		}
 		]
 	};
